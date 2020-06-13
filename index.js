@@ -77,7 +77,7 @@ app.post('/signUp', (req,res) =>
 //Checking whether password and username match and providing either success or error
 //Method GET , parameters :  username , password
 
-app.get('/login',(req,res) => {
+app.post('/login',(req,res) => {
 
     let username = req.body.username;
    //Hashcoding password before checking with DB
