@@ -3,7 +3,13 @@ import { Container, Segment, Grid, Header, Divider, Form , Checkbox, Button } fr
 import {Redirect, Link} from "react-router-dom"
 import Cookies from 'universal-cookie';
 
-export default function BookEventPage() {
+function calculateBudget  (venueBudget,foodBudget,soundsAndLightsBudget,cameraAndVideoBudget)  {
+        
+    return Number(venueBudget) + Number(foodBudget) + Number(soundsAndLightsBudget) + Number(cameraAndVideoBudget)
+
+}
+
+ function BookEventPage() {
 
     const [state,setState] = React.useState({
         username : '',
@@ -18,11 +24,7 @@ export default function BookEventPage() {
     });
 
 
-    const calculateBudget = (venueBudget,foodBudget,soundsAndLightsBudget,cameraAndVideoBudget) => {
-        
-        return Number(venueBudget) + Number(foodBudget) + Number(soundsAndLightsBudget) + Number(cameraAndVideoBudget)
-
-    }
+  
 
     const handleInput = (event) => {
 
@@ -182,3 +184,5 @@ export default function BookEventPage() {
             </Grid>
     )
 }
+
+export { BookEventPage as default , calculateBudget};
