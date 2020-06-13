@@ -1,0 +1,24 @@
+{
+  "name": "simpleplan",
+  "version": "1.0.0",
+  "description": "Submission Web Application for Application Frameworks module SE3040 2020 June , IT18050318 under category Event Planning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aqeel-Zeid/SimplyPlan.git"
+  },
+  "author": "Aqeel Zeid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aqeel-Zeid/SimplyPlan/issues"
+  },
+  "homepage": "https://github.com/Aqeel-Zeid/SimplyPlan#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18",
+    "nodemon": "^2.0.4"
+  }
+}
