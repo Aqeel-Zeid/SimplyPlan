@@ -66,10 +66,44 @@ app.post('/signUp', (req,res) =>
     
           });
     
-          //Sending client to login page
+          //Sending success Response
           return res.status(200).send(username + ' added to Database');
         }
       });
+
+})
+
+//Login Route
+//Checking whether password and username match and providing either success or error
+//Method GET , parameters :  username , password
+
+app.get('/login',(req,res) => {
+
+    let username = req.body.username;
+   //Hashcoding password before checking with DB
+   let password = encode().value(req.body.password);
+
+   if (!(username) || password == 0) {
+    return res.status(404).send('Error in JSON body');
+    }
+
+    userModel.findOne({ username: username, password: password, type: "admin" }, (err, user) => {
+        if (err) {
+          console.log(err);
+        }
+    
+        //If a record is found
+        if (user) {
+          return res.status(200).send('Valid Login');
+        }
+    
+        //If no record found
+        if (!user) {
+          console.log('Incorrect Login Details');
+          res.status(404).send('Incorrect Login Details');
+        }
+      });
+    
 
 })
 
