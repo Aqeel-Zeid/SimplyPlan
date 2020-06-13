@@ -1,7 +1,7 @@
 let mongoose = require('mongoose/');
 
 //Defining a Event Schema
-let userSchema = mongoose.Schema({
+let eventSchema = mongoose.Schema({
     username: String,
     email: String,
     date : String,
@@ -13,4 +13,4 @@ let userSchema = mongoose.Schema({
     estimate : Number
   });
 
-  module.exports  = userSchema
+  module.exports  = eventSchema

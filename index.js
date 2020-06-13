@@ -87,7 +87,7 @@ app.get('/login',(req,res) => {
     return res.status(404).send('Error in JSON body');
     }
 
-    userModel.findOne({ username: username, password: password, type: "admin" }, (err, user) => {
+    userModel.findOne({ username: username, password: password }, (err, user) => {
         if (err) {
           console.log(err);
         }
@@ -135,22 +135,24 @@ app.post('/BookEvent',(req,res) => {
 
     //creating the objee
     let eventDoc = new eventsModel({
-        username ,
-        email,
-        date,
-        peopleAttending,
-        venueBudget,
-        foodBudget,
-        soundsAndLightsBudget,
-        cameraAndVideoBudget,
-        estimate
+        username : username,
+        email : email,
+        date : date,
+        peopleAttending : Number(peopleAttending),
+        venueBudget : Number(venueBudget),
+        foodBudget : Number(foodBudget),
+        soundsAndLightsBudget : Number(soundsAndLightsBudget),
+        cameraAndVideoBudget : Number(cameraAndVideoBudget),
+        estimate : Number(estimate)
     })
 
-    eventDoc.save( (err) => {
+    console.log(eventDoc)
+
+    eventDoc.save( (err,event) => {
         if (err) {
             return console.error( "DB failed couldnt Add event\n" + err);
           }
-          console.log(user.username + " added to DB");
+          console.log(event + " added to DB");
   
     })
 
@@ -158,6 +160,28 @@ app.post('/BookEvent',(req,res) => {
     return res.status(200).send(' added to Database');
 
 })
+
+//Get All Events route
+//Gets All the Events Scheduled by users
+//Method : GET , parameters : none
+
+app.get("/getAllEvents",async (req,res) => {
+
+    const events = await eventsModel.find({});
+
+    
+        let eventMap = {};
+
+        events.forEach(function(event) {
+          eventMap[event._id] = event;
+          console.log(event)
+        });
+    
+        res.send(eventMap);  
+    
+})
+
+
 
 
 /**
