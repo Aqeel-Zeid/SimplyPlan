@@ -10,6 +10,7 @@ let userSchema = mongoose.Schema({
     foodBudget : Number,
     soundsAndLightsBudget : Number,
     cameraAndVideoBudget : Number,
+    estimate : Number
   });
 
   module.exports  = userSchema

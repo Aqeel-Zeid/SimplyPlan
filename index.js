@@ -107,6 +107,58 @@ app.get('/login',(req,res) => {
 
 })
 
+//Book Event Route
+//Route that adds Event Booking Details
+//Method POST
+//parameters : 
+//     username : String
+//     email: String,
+//     date : String,
+//     peopleAttending : Number,
+//     venueBudget : Number,
+//     foodBudget : Number,
+//     soundsAndLightsBudget : Number,
+//     cameraAndVideoBudget : Number,
+
+app.post('/BookEvent',(req,res) => {
+
+    //extracting the sent paramenters from the body
+    let username = req.body.username;
+    let email = req.body.email;
+    let date = req.body.date;
+    let peopleAttending = req.body.peopleAttending;
+    let venueBudget = req.body.venueBudget;
+    let foodBudget = req.body.foodBudget;
+    let soundsAndLightsBudget = req.body.soundsAndLightsBudget;
+    let cameraAndVideoBudget = req.body.cameraAndVideoBudget;
+    let estimate = req.body.estimate;
+
+    //creating the objee
+    let eventDoc = new eventsModel({
+        username ,
+        email,
+        date,
+        peopleAttending,
+        venueBudget,
+        foodBudget,
+        soundsAndLightsBudget,
+        cameraAndVideoBudget,
+        estimate
+    })
+
+    eventDoc.save( (err) => {
+        if (err) {
+            return console.error( "DB failed couldnt Add event\n" + err);
+          }
+          console.log(user.username + " added to DB");
+  
+    })
+
+    //Sending client to login page
+    return res.status(200).send(' added to Database');
+
+})
+
 
 /**
  * Connecting to the Database
