@@ -8,6 +8,9 @@ let mongoose = require('mongoose/');
 
 app.use(express.json());
 
+//MongoDB url
+let url = "mongodb://localhost:27017/SimplyPlanDB";
+
 /**
  * Connecting to the Database
  */
@@ -32,5 +35,7 @@ function connectToDB() {
 // Keep server running on port
 const port = 8080;
 app.listen(port, () => {
+
+  connectToDB();
   console.log(`Server running on port:${port}`);
 });
