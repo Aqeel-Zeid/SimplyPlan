@@ -11,9 +11,11 @@ import SignUpPage from './Pages/SignUpPage';
 import BookEventPage from './Pages/BookEventPage';
 import ViewAllEventsPage from './Pages/ViewAllEventsPage';
 
+import {Container} from 'semantic-ui-react'
+
 function App() {
   return (
-    <>
+    <Container>
       <Router>
         <Switch>
             <Route path="/viewAllEvents">
@@ -30,7 +32,7 @@ function App() {
             </Route>
           </Switch>
       </Router>
-    </>
+    </Container>
   );
 }
 
