@@ -3,7 +3,11 @@ import {Grid,Segment,Form,Button,Header} from 'semantic-ui-react'
 import {Redirect} from "react-router-dom"
 import {Link} from 'react-router-dom'
 
+import Cookies from 'universal-cookie';
+
 export default function LoginPage() {
+
+    const cookies = new Cookies();
 
     const [state,setState] = React.useState({username:'',password:'', loggedIn : false})
     
@@ -13,6 +17,8 @@ export default function LoginPage() {
 
     const handleSubmit = () =>
     {
+
+
         fetch('http://localhost:8080/login', {
             method: 'POST', 
             headers: {
@@ -27,6 +33,10 @@ export default function LoginPage() {
             {
                 console.log(response,state)
                 setState({...state, loggedIn : true})
+
+                
+                cookies.set('username', state.username, { path: '/' });
+
             }
                     
                     
