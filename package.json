@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Aqeel-Zeid/SimplyPlan#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "hashcode": "^1.0.3",
     "mongoose": "^5.9.18",
     "nodemon": "^2.0.4"
   }
